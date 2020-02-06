@@ -1,0 +1,232 @@
+## Use smooth scrolling as the default
+set smooth
+
+## Backup files to filename~
+set backup
+
+## Enable ~/.nano_history for saving and reading search/replace strings.
+set historylog
+
+## Constantly display the cursor position in the statusbar.  Note that
+## this overrides "quickblank".
+set const
+
+## Don't wrap text at all.
+set nowrap
+## Don't display the helpful shortcut lists at the bottom of the screen.
+set nohelp
+
+# Подсветка *.conf
+#syntax "\.?conf$"
+syntax "conf" "\.conf$" "\.cfg$"
+
+color green ""[^"]*""
+
+#color brightgreen ""(\\.|[^"])*""
+color white "[0-9]"
+
+# подсвечиваем важные слова
+color brightwhite "(_enable|_flags|ifconfig|_name|_program).*$"
+#color brightwhite "[[:<:]](YES|NO)[[:>:]]"
+
+#знаки = ; .
+color brightyellow "[=;.!@#$*?-\"]"
+color brightwhite "[\"]"
+color brightred "\:\{?[0-9A-Z_!@#$*?-]+\}?"
+
+#Подсвечиваем коментарии.
+color cyan  "#.*"
+icolor cyan "^[[:space:]]*#.*$"
+icolor brightcyan "^[[:space:]]*##.*$"
+
+
+# Подсветка make.conf
+syntax "make.conf" "make.conf$"
+color brightred "\$+[{(][a-zA-Z0-9_-]+[})]"
+#знак =
+color brightyellow "[=]"
+#основные символы
+color red "false"
+color brightwhite "true"
+#для proxy
+color brightred "FETCH_ENV.*"
+#Посветим переменные с NO
+color brightcyan "NO.*$"
+#Какой язык используем.
+color brightmagenta "DOC_LANG"
+#Подсвечиваем коментарии.
+icolor brightblue "^[[:space:]]*#.*$"
+icolor cyan "^[[:space:]]*##.*$"
+#color magenta ""
+color green "\\"
+#для false & true
+
+##
+# расширение
+syntax "sh" "\.sh$" ".bashrc"
+# устройства
+color brightblue "(/dev/audio|/dev/dsp|/dev/mixed|/dev/null|/dev/stderr|/dev/stdin|/dev/stdout|/dev/zero)\>"
+# названия функций
+icolor brightmagenta "^[0-9A-Z_]+\(\)"
+# скобки и разделители
+color green "(\{|\}|\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)"
+# опции
+color green "-[Ldefgruwx]\>"
+# опции test
+color green "-(eq|ne|gt|lt|ge|le|s|n|z)\>;"
+# ключевые слова
+color brightred "\<(red|gpg|md5sum|openssl|ssh)\>;"
+# ключевые слова (одна строка - надо удалять переносы)
+color brightyellow "\<(alias|bg|break|case|clear|continue|declare|done|do|elif|else|esac|eval|exec|exit|export|fg|fi|for|if|in|let|read|return|select|set|shift|source|then|trap|umask|unset|until|wait|while)\>"
+# переменные
+icolor brightgreen "\$\{?[0-9A-Z_!@#$*?-]+\}?"
+# ключевые слова (одна строка - надо удалять переносы)
+color cyan "\<(apt-get|ar|arch|ash|awk|basename|bash|bg_backup|bg_restore|bsh|bzip|bzip2|cam|cat|cd|cdda2wav|chgrp|chmod|chown|cmp|col|compress|cp|cpio|cpp|csh|curl|cut|date|dd|df|dialog|diff|dirname|dmesg|dnsdomainname|doexec|domainname|dpkg|dpkg-buildpackage|dpkg-scanpackages|dpkg-scansources|echo|ed|editor|egrep|ex|fakeroot|false|fdformat|fetchmail|fgrep|find|formail|free|freeze|fsconf|gawk|gcc|gdb|grep|gunzip|gzip|ha|hostname|igawk|insmod|ipcalc|iptables|jpegtopnm|kill|ksh|lame|less|lharc|lilo|linestart|linuxconf|linux_logo|ln|locale|logger|login|lpdconf|ls|lynx|mail|man|mc|mcedit|mcview|mimedecode|mkdir|mkdirhier|mkdosfs|mke2fs|mkfs.ext2|mkfs.ext3|mkfs.minix|mkfs.msdos|mkinitrd|mknod|mktemp|modprobe|more|mount|mozilla|mp3info|msgfmt|mt|munpack|mutt|mv|netconf|netstat|nice|nisdomainname|nm|patch|pinfo|ping|pnmscale|ppmtoxpm|procmail|ps|pwd|rar|red|remadmin|rename|rm|rmdir|rmmod|rplay|rpm|rpm2cpio|sa-learn|sed|set|setserial|sh|sleep|sort|spamassassin|spamc|spamd|ssmtp|strace|stty|su|sync|taper|tar|tcpdump|tcsh|tempfile|test|time|tnef|touch|tr|true|tune2fs|umount|uname|unarj|uniq|unzip|uptime|userconf|usleep|vi|view|vim|wc|wget|whiptail|wvWare|xconf|Xdialog|xgettext|xmessage|xmodmap|xterm|ypdomainname|zcat|zgv|zip|zoo|zsh)\>"
+# текст в кавычках
+color green ""(\\.|[^"])*"" "''(\\.|[^''])*''"
+# комменты
+color magenta "(^|[[:space:]])#.*$"
+# конец пункта case
+color brightred "\;\;"
+# пробелы в конце строки
+color ,green "[[:space:]]+$"
+
+syntax "asterisk" "/.*/asterisk/.*\.conf$|extensions.conf"
+## Separating characters
+color    green    "(\{|\}|\(|\)|\]|\[|`|\\|\$|<|>|!|=|&|\|)"
+
+## Labels
+color   blue   "^(\s)*exten(\s)*=>(\s)*((s|t|a|i|o|fax)|[0-9*#]+|_([XZN0-9*#]*(\[[XZN0-9*#]*\])*[XZN0-9*#]*)*(\.)?),([0-9]|n)\([A-Za-z0-9_\-]+\)"
+
+## Priorities
+color   green   "^(\s)*exten(\s)*=>(\s)*((s|t|a|i|o|fax)|[0-9*#]+|_([XZN0-9*#]*(\[[XZN0-9*#]*\])*[XZN0-9*#]*)*(\.)?),([02-9]|n)"
+color   blue    "^(\s)*exten(\s)*=>(\s)*((s|t|a|i|o|fax)|[0-9*#]+|_([XZN0-9*#]*(\[[XZN0-9*#]*\])*[XZN0-9*#]*)*(\.)?),(1)"
+
+## Comma back to black
+color    black    "^(\s)*exten(\s)*=>(\s)*((s|t|a|i|o|fax)|[0-9*#]+|_([XZN0-9*#]*(\[[XZN0-9*#]*\])*[XZN0-9*#]*)*(\.)?),"
+## Extensions
+color    red    "^(\s)*exten(\s)*=>(\s)*((s|t|a|i|o|fax)|[0-9*#]+|_([XZN0-9*#]*(\[[XZN0-9*#]*\])*[XZN0-9*#]*)*(\.)?)"
+## Word 'exten' in dialplan
+color    magenta    "^(\s)*exten(\s)*=>"
+
+## included context
+color    green    "^(\s)*include(\s)*=>(\s)*\<.+\>"
+## 'include' in dialplan
+color    magenta    "^(\s)*include(\s)*=>"
+
+## Conditionals
+color    blue    "\$\[.+\]"
+## Contexts
+color    green     "^\[.+\]"
+## Strings
+color    magenta    ""(\\.|[^"])*"" "'(\\.|[^'])*'"
+## Technologies
+color    magenta    "\<(SIP/|IAX2/|Zap/|Local/).*\>"
+## Anything following NoOp, same color as comments (will not be executed)
+## Colored before variables, since they will be substituted
+color    yellow    "\<NoOp\>.*"
+## Variables (read mode)
+## May or may not be appropriate, it is a bit too hairy at the moment
+color    red     "\$\{?[0-9A-Za-z_!@#%,:$*?-]+(\([A-Za-z0-9_$\{\}\(\)/!@%:,#*?]+\))?\}?"
+
+## Applications
+color   cyan    "\<(A(DSIProg|gent(((Callback)?Login)|MonitorOutgoing)|GI|larmReceiver|MD|nswer|ppendCDRUserField|uthenticate))\>"
+color   cyan    "\<(B(ackground(Detect)?|usy))\>"
+color   cyan    "\<(C(han(geMonitor|IsAvail|nelRedirect|Spy)|on(gestion|t(inueWhile|rolPlayback))))\>"
+color   cyan    "\<(D(ateTime|Bdel(tree)?|eadAGI|i(al|ctate|rectory)|ISA|umpChan))\>"
+color   cyan    "\<(E(AGI|cho|ndWhile|x(ec(If|While)?)|itWhile|te(nSpy|rnalIVR)))\>"
+color   cyan    "\<(F(astAGI|estival|lash|orkCDR))\>"
+color   cyan    "\<(G(etPEID|o(sub(if)?|to(If(Time)?)?)))\>"
+color   cyan    "\<(Ha(ngup|s(New)?Voicemail))\>"
+color   cyan    "\<(I(AX2Provision|CES|mportVar))\>"
+color   cyan    "\<(Lo(g|okup(Blacklist|CIDName)))\>"
+color   cyan    "\<(M(a(cro((Ex(clusive)|it)?|(If)?)|ilboxExists)|eetMe(Admin|Count)?|illiwatt|o(nitor|rseCode)|P3Player|usicOnHold))\>"
+color   cyan    "\<(N(BScat|o(CDR|Op)))\>"
+color   cyan    "\<(P(a(ge|rk(AndAnnounce|edCall)?|use(Monitor|QueueMember))|ickUp|lay(back|tones)|r(ivacyManager|ogress)))\>"
+color   cyan    "\<(Queue(Log)?)\>"
+color   cyan    "\<(R(andom|e(a((d(File)?)lTime(Update)?)|cord|moveQueueMember|setCDR|t(ryDial|urn))|inging))\>"
+color   cyan    "\<(S(ay(Alpha|Digits|Number|Phonetic|UnixTime)|e(nd(DTMF|Image|Text|URL)|t(AMAFlags|Caller(ID|Pres)|CDRUserField|GlobalVar|MusicOnHold|TransferCapability)?)|IP(AddHeader|DtmfMode)|LA(Station|Trunk)|oftHangup|t(a(ckPop|rtMusicOnHold)|op(MixMonitor|Monitor|PlayTones|MusicOnHold))|ystem))\>"
+color   cyan    "\<(Tr(ansfer|y(Exec|System)))\>"
+color   cyan    "\<(U(npause(Monitor|QueueMember)|erEvent))\>"
+color   cyan    "\<(V(erbose|MAuthenticate|oiceMail(Main)?))\>"
+color   cyan    "\<(W(ait(Exten|For(Ring|Silence)|MusicOnHold)?|hile))\>"
+color   cyan    "\<(Zap(ateller|Barge|RAS|Scan))\>"
+
+## Functions
+##     to be implemented
+
+## something else
+icolor    brightgreen    "^[0-9A-Z_]+\(\)"
+## color all curly braces (why?)
+##color    blue    "[\{\}]"
+## Comments
+color    yellow    ";.*"
+
+syntax "ml" ".*\.([jrs]?html?|xml|sgml?|lhtml|opml|kdevelop|vcproj|glade|xsd|plist|gcs|dtd|dcl)$" "catalog$" "docbook$"
+color white "^.+$"
+color green start="<" end=">"
+color cyan "<[^> ]+"
+color cyan ">"
+color yellow start="<!DOCTYPE" end="[/]?>"
+color yellow start="<!--" end="-->"
+color red "&[^;]*;"
+
+# for .nanorc
+syntax "nanorc" "[\.]*nanorc$"
+color white "^ *(set|unset).*$"
+color cyan "^ *(set|unset) (autoindent|backup|const|cut|fill|keypad|multibuffer|noconvert|nofollow|nohelp|nowrap|operatingdir|preserve|quotestr|regexp|smooth|speller|suspend|tabsize|tempfile|historylog|view)"
+color brightwhite "^ *syntax [^ ]*"
+color brightblue "^ *set\>" "^ *unset\>" "^ *syntax\>"
+color white "^ *color\>.*"
+color yellow "^ *color (bright)?(white|black|red|blue|green|yellow|magenta|cyan)\>"
+color magenta "^ *color\>"
+color green "^#.*$"
+
+
+## Syntax highlighting for Dockerfiles
+syntax "Dockerfile" "Dockerfile[^/]*$"
+
+## Keywords
+icolor red "^(FROM|MAINTAINER|RUN|CMD|LABEL|EXPOSE|ENV|ADD|COPY|ENTRYPOINT|VOLUME|USER|WORKDIR|ONBUILD)[[:space:]]"
+
+## Brackets & parenthesis
+color brightgreen "(\(|\)|\[|\])"
+
+## Double ampersand
+color brightmagenta "&&"
+
+## Comments
+icolor cyan "^[[:space:]]*#.*$"
+
+## Blank space at EOL
+color ,green "[[:space:]]+$"
+
+## Strings, single-quoted
+color brightwhite "'([^']|(\\'))*'" "%[qw]\{[^}]*\}" "%[qw]\([^)]*\)" "%[qw]<[^>]*>" "%[qw]\[[^]]*\]" "%[qw]\$[^$]*\$" "%[qw]\^[^^]*\^" "%[qw]![^!]*!"
+
+## Strings, double-quoted
+color brightwhite ""([^"]|(\\"))*"" "%[QW]?\{[^}]*\}" "%[QW]?\([^)]*\)" "%[QW]?<[^>]*>" "%[QW]?\[[^]]*\]" "%[QW]?\$[^$]*\$" "%[QW]?\^[^^]*\^" "%[QW]?![^!]*!"
+
+## Single and double quotes
+color brightyellow "('|\")"
+## Nano syntax highlighting for YAML files
+##
+## Author:      Leo Arnold
+## License:     Public Domain
+## URL:         https://gist.github.com/leoarnold/96272e33753aff09163cf18ad641f028
+syntax "yaml" "\.(yml|yaml)$"
+## Keys
+icolor green "^[[:space:]]*(- )?[.0-9A-Z_/-]+:( |$)"
+## Structurals
+color red "(^---|^[[:space:]]*- |: |:$)"
+## Strings, double-quoted
+color red ""([^"]|(\\"))*""
+color magenta "\$(\w+|\{\w+\})"
+## Strings, single-quoted
+color red "'([^']|(\\'))*'"
+## Comments
+color yellow "(^|[[:space:]]+)#.*$"
+## Some common markers
+color black,red "(TODO|FIXME|\?\?\?)"
+## Trailing spaces
+color ,red "[[:space:]]+$"
