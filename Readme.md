@@ -94,3 +94,7 @@ snap run firefox
 apt-get install firmware-misc-nonfree
 update-initramfs -um'
 ```
+### Дополнительные пакеты для установки
+##### Подсчет занимаемого пространства
+apt-get install ncdu — визуализация занимаемого места  
+apt-get install bash-completion - 
