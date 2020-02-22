@@ -169,3 +169,8 @@ if [ ! "$TMUX" ]; then
 # tmux attach || tmux new-session \; split-window -v \; split-window -h \; select-layout main-vertical;
      tmux attach || tmux new-session ;
 fi
+
+if [ `whoami` != "root" ]
+then
+   [ -f /usr/bin/cmatrix ] && cmatrix  -a -B
+fi
