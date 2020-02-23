@@ -98,6 +98,7 @@ update-initramfs -um'
 ##### Подсчет занимаемого пространства
 apt-get install ncdu — визуализация занимаемого места  
 apt-get install bash-completion - 
+apt-get install cmatrix
 
 ### Подсказки
 https://cht.sh/wget
