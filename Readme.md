@@ -102,3 +102,26 @@ apt-get install cmatrix
 
 ### Подсказки
 https://cht.sh/wget
+
+### Автоматические обновления безопасности - Unattended Upgrades  
+#### Устанавливаем пакет  
+```
+apt-get install unattended-upgrades
+```
+#### Создаем конфигурационный файл, для этого запускаем интерактивное меню для настройки  
+```
+dpkg-reconfigure  unattended-upgrades
+```
+#### Включение репорта по почте  
+В файле */etc/apt/apt.conf.d/02periodic* строку   
+```
+//Unattended-Upgrade::Mail "root";
+```
+на  
+```
+Unattended-Upgrade::Mail "replacewithyouremail";
+``` 
+#### Запустить для отладки  
+```
+unattended-upgrades --dry-run --debug
+```
