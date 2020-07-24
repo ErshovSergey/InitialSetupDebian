@@ -39,6 +39,7 @@ if [ -f /usr/local/bin/multitail ]; then alias tail=/usr/local/bin/multitail; fi
 HISTSIZE=5000
 HISTFILESIZE=10000
 
+export PATH=$PATH:/usr/sbin
 
 shopt -s histappend
 PROMPT_COMMAND='history -a'
