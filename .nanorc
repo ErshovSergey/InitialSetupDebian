@@ -9,7 +9,7 @@ set historylog
 
 ## Constantly display the cursor position in the statusbar.  Note that
 ## this overrides "quickblank".
-set const
+#set const
 
 ## Don't wrap text at all.
 set nowrap
