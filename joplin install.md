@@ -9,4 +9,6 @@ wget -O - https://raw.githubusercontent.com/laurent22/joplin/master/Joplin_insta
 apt update
 apt install snapd
 snap install core
+
+sudo snap install joplin-james-carroll
 ```
