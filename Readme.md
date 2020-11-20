@@ -85,6 +85,7 @@ W - сохранить настройки в файл (в файл  ~/.toprc)
 # Mozilla provides an official Snap package for Firefox: 
 sudo apt install snapd
 sudo snap install firefox
+install libreoffice
 snap run firefox
 ```
 
