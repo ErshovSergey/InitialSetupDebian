@@ -88,6 +88,15 @@ sudo snap install firefox
 install libreoffice
 snap run firefox
 ```
+### Блокировка рекламы в Firefox с помощью ublock origin (https://github.com/gorhill/uBlock)
+  - в дополнении uBlock Origin в настройках есть функция МОИ ФИЛЬТРЫ
+  - Добавить фильтр: 
+```
+mail.yandex.ru##.ns-view-infoline-box+div
+mail.yandex.ru##.ns-view-id-*:contains(Реклама)
+##.ns-view-mail-pro-left-column-button
+##.ns-view-mail-pro-left-column-button + div
+```
 
 ### Устраннение ошибки *W: Possible missing firmware /lib/firmware/i915/kbl_dmc_ver1_01.bin for module i915*  
 Необходимо подключить репозиторий nonfree  
@@ -126,3 +135,4 @@ Unattended-Upgrade::Mail "replacewithyouremail";
 ```
 unattended-upgrades --dry-run --debug
 ```
+
