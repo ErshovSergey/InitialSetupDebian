@@ -1,3 +1,6 @@
+## Запретить модификацию файла, почему вы хотите это в RC файле? ;)
+#set view
+
 ## Use smooth scrolling as the default
 set smooth
 
@@ -90,6 +93,17 @@ color magenta "(^|[[:space:]])#.*$"
 color brightred "\;\;"
 # пробелы в конце строки
 color ,green "[[:space:]]+$"
+
+## Asterisk syntax highlighting
+## v.03 2007-11-18
+## Comments/updates - jmcanfield@gmail.com
+
+## Modified by Johan Adler from 2007-11-17 and forward, tested using Debian and Asterisk 1.2.13
+## 2007-11-18
+## Currently optimized for dialplan (extensions.conf and any included files)
+## Application regex altered and hopefully optimized.
+## Note that the order of regex's is important
+## color is case sensitive, icolor case insensitive
 
 syntax "asterisk" "/.*/asterisk/.*\.conf$|extensions.conf"
 ## Separating characters
