@@ -21,7 +21,7 @@ Last_Command=$? # Must come first!
 
 # Различные варианты 'ls' (предполагается, что установлена GNU-версия ls)
 #alias ee='nano '
-alias nn='nano -u'
+alias nn='nano -u -c -i'
 alias ll='ls -la'
 alias la='ls -Al'               # показать скрытые файлы
 alias ls='ls -GF'       # выделить различные типы файлов цветом
