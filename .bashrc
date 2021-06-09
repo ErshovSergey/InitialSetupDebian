@@ -149,8 +149,9 @@ set_prompt () {
 
 }
 
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
+bind '"^[[A":history-search-backward' 2>/dev/null
+bind '"^[[B":history-search-forward'  2>/dev/null
+
 shopt -s autocd
 
 if [ -f /etc/bash_completion ]; then
