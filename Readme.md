@@ -80,6 +80,10 @@ W - сохранить настройки в файл (в файл  ~/.toprc)
 
 ### Установка Firefox более новой версии чем ESR  
 По мотивам https://wiki.debian.org/Firefox
+##### youtube-dl-gui - скачивание с youtube
+устанавливаем из под пользователя
+http://ppa.launchpad.net/nilarimogard/webupd8/ubuntu/pool/main/y/youtube-dlg/
+
 ##### Using snap  
 ```
 # Mozilla provides an official Snap package for Firefox: 
