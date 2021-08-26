@@ -100,6 +100,19 @@ snap install youtube-dl-pro
 Далее с помощью alacarte добавить в ярлык запуска параметр
 ```DISABLE_WAYLAND=1```, вставлять  после env.
 
+##### youtube-dl-gui
+Оф.сайт [youtube-dl-gui](https://mrs0m30n3.github.io/youtube-dl-gui/)  
+Установка:  
+- скачать 
+```wget http://ppa.launchpad.net/nilarimogard/webupd8/ubuntu/pool/main/y/youtube-dlg/youtube-dlg_0.4-1~webupd8~zesty4_all.deb```  
+- установить  
+```dpkg -i youtube-dlg_0.4-1~webupd8~zesty4_all.deb```  
+- - для установки в debian 11 необходим python-wxgtk3.0, который есть в debian 10.
+добавляем в _/etc/apt/sources.list_ строки  
+   ```deb http://deb.debian.org/debian buster  main contrib non-free```  
+   ```apt-get update```  
+   ``` apt-get -t  buster install python-wxgtk3.0```  
+
 ### Блокировка рекламы в Firefox с помощью ublock origin (https://github.com/gorhill/uBlock)  
 [uBlockOrigin](./uBlockOrigin.md)  
 
