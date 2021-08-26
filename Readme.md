@@ -92,6 +92,14 @@ sudo snap install firefox
 install libreoffice
 snap run firefox
 ```
+##### YouTube-DL GUI
+snap install youtube-dl-pro
+После установки надо изменить ярлык запуска, иначе не запускается при использовании wayland.
+Изменить можно с помощью Alacarte
+```sudo apt-get install alacarte```
+Далее с помощью alacarte добавить в ярлык запуска параметр
+```DISABLE_WAYLAND=1```, вставлять  после env.
+
 ### Блокировка рекламы в Firefox с помощью ublock origin (https://github.com/gorhill/uBlock)  
 [uBlockOrigin](./uBlockOrigin.md)  
 
