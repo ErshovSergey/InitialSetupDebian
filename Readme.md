@@ -110,8 +110,10 @@ snap install youtube-dl-pro
 - - для установки в debian 11 необходим python-wxgtk3.0, который есть в debian 10.
 добавляем в _/etc/apt/sources.list_ строки  
    ```deb http://deb.debian.org/debian buster  main contrib non-free```  
+   Выполнить команды и снова попробовать установить  
+   ``` apt-get -t buster install python-wxgtk3.0```  
    ```apt-get update```  
-   ``` apt-get -t  buster install python-wxgtk3.0```  
+   ```apt --fix-broken install```  
 
 ### Блокировка рекламы в Firefox с помощью ublock origin (https://github.com/gorhill/uBlock)  
 [uBlockOrigin](./uBlockOrigin.md)  
