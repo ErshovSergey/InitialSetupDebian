@@ -23,9 +23,12 @@ deb-src http://deb.debian.org/debian-security/ bullseye-security main contrib no
 deb http://deb.debian.org/debian bullseye-updates main contrib non-free
 deb-src http://deb.debian.org/debian bullseye-updates main contrib non-free
 ```
-If you also need the Backports, contrib, and non-free components, add bullseye-backports lines. For example, for Debian 11/Bullseye:
+If you also need the Backports, contrib, and non-free components, add bullseye-backports lines. For example, for Debian 11/Bullseye:  
 ```
 deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free
 ```
+Если нужны пакеты из Debian 10  (устанавливать командой ```apt-get -t  buster install <packetname>```)
+```deb http://deb.debian.org/debian buster  main contrib non-free```  
+
 Источник [wiki.debian.org/SourcesList](https://wiki.debian.org/SourcesList)   
