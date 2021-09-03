@@ -124,6 +124,8 @@ snap install youtube-dl-pro
 apt-get install firmware-misc-nonfree
 update-initramfs -um'
 ```
+### Устраннение ошибки *[Firmware Bug]: TSC_DEADLINE disabled due to Errata; please update microcode to version: 0x52 (or later)*    
+```sudo apt-get install intel-microcode```  
 ### Дополнительные пакеты для установки
 ##### Подсчет занимаемого пространства
 apt-get install ncdu — визуализация занимаемого места  
