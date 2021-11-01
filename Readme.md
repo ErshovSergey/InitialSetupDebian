@@ -161,3 +161,4 @@ Unattended-Upgrade::Mail "replacewithyouremail";
 unattended-upgrades --dry-run --debug
 ```
 
+[Как изменить имя интерфейса](./RenameNetworkInterface.md)  
