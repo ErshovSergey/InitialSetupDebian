@@ -11,3 +11,5 @@ https://extensions.gnome.org/extension/755/hibernate-status-button/
 Чтобы работала - установить дополнение 
 quake-mode  
 https://extensions.gnome.org/extension/1411/quake-mode/  
+### OpenWeather
+https://extensions.gnome.org/extension/750/openweather/
