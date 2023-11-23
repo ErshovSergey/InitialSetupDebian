@@ -4,6 +4,8 @@ https://extensions.gnome.org/extension/4839/clipboard-history/
 
 Для добавления кнопки гибернации установить расширение  
 ### Hibernate Status Button  
+Hibernate - работает только если размер swap больше размера оперативной памяти. Если раздел swap меньше размера памяти - Hibernate работать не будет.  
+
 https://extensions.gnome.org/extension/755/hibernate-status-button/
 **Не работает**  
 ### Тильда  
