@@ -135,7 +135,7 @@ apt-get install cmatrix
 ### Подсказки
 https://cht.sh/wget
 
-### Руссицикация - переключение раскладки через Capslock  
+### Руссификация - переключение раскладки через Capslock  
 ``` gsettings set org.gnome.desktop.input-sources xkb-options "['grp:caps_toggle']" ```
 
 ### Автоматические обновления безопасности - Unattended Upgrades  
