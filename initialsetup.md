@@ -1,12 +1,24 @@
 ### Обновление
 
 _/etc/apt/sources.list_
+#### Debian 11
 ```
 deb http://ftp.ru.debian.org/debian bullseye main contrib
 deb http://ftp.ru.debian.org/debian bullseye-updates main contrib
 
 # security updates
 deb http://security.debian.org/debian-security bullseye-security main contrib non-free
+```
+#### Debian 12
+```
+deb http://deb.debian.org/debian bookworm main
+deb-src http://deb.debian.org/debian bookworm main
+
+deb http://deb.debian.org/debian-security/ bookworm-security main
+deb-src http://deb.debian.org/debian-security/ bookworm-security main
+
+deb http://deb.debian.org/debian bookworm-updates main
+deb-src http://deb.debian.org/debian bookworm-updates main
 ```
 ### Установить пакеты
 ```apt install bash-completion sudo tmux qemu-guest-agent rsync```
