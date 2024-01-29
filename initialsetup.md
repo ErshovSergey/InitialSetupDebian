@@ -1,5 +1,5 @@
-### Обновление
-
+### Настройка обновлений   
+[виртуальная][физическая][ноутбук]  
 _/etc/apt/sources.list_
 #### Debian 11
 ```
@@ -20,14 +20,18 @@ deb-src http://deb.debian.org/debian-security/ bookworm-security main
 deb http://deb.debian.org/debian bookworm-updates main
 deb-src http://deb.debian.org/debian bookworm-updates main
 ```
-### Установить пакеты
-```apt install bash-completion sudo tmux qemu-guest-agent rsync```
+### ДоУстановить пакеты
+[физическая][ноутбук]  
+```apt install -y bash-completion sudo tmux rsync```  
+[виртуальная]  
+```apt install -y qemu-guest-agent rsync```  
 
 ### Окружение
 добавить в _/root/.bashrc_ содержимое файла
 добавить в _/root/.nanorc_ содержимое файла
 
 ### Выключить ipv6 на узле  
+[виртуальная][физическая][ноутбук]  
 создать файл _/etc/sysctl.d/disable-ipv6.conf_  
 ```echo 'net.ipv6.conf.all.disable_ipv6 = 1' > /etc/sysctl.d/disable-ipv6.conf```  
 ```echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.d/disable-ipv6.conf```  
@@ -39,6 +43,7 @@ deb-src http://deb.debian.org/debian bookworm-updates main
 добавить права на переход в root - создать файл _/etc/sudoers.d/support_   
 ```mkdir -p /etc/sudoers.d && echo 'support ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/support```   
 ### Установить сервер времени (для физичеких ПК)   
+[виртуальная][физическая][ноутбук]
 в файле _/etc/chrony/chrony.conf_ указать сервер времени
 ```pool 10.1.1.254 iburst```
 
