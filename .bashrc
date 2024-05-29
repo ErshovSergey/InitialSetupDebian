@@ -7,6 +7,25 @@
 
 # You may uncomment the following lines if you want `ls' to be colorized:
 # export LS_OPTIONS='--color=auto'
+# eval "$(dircolors)"
+# alias ls='ls $LS_OPTIONS'
+# alias ll='ls $LS_OPTIONS -l'
+# alias l='ls $LS_OPTIONS -lA'
+#
+# Some more alias to avoid making mistakes:
+# alias rm='rm -i'
+# alias cp='cp -i'
+# alias mv='mv -i'
+
+# ~/.bashrc: executed by bash(1) for non-login shells.
+
+# Note: PS1 and umask are already set in /etc/profile. You should not
+# need this unless you want different defaults for root.
+# PS1='${debian_chroot:+($debian_chroot)}\h:\w\$ '
+# umask 022
+
+# You may uncomment the following lines if you want `ls' to be colorized:
+# export LS_OPTIONS='--color=auto'
 # eval "`dircolors`"
 # alias ls='ls $LS_OPTIONS'
 # alias ll='ls $LS_OPTIONS -l'
@@ -19,13 +38,18 @@
 
 Last_Command=$? # Must come first!
 
+#clock - A bash clock that can run in your terminal window.
+clock ()
+{
+while true;do clear;echo "===========";date +"%r";echo "===========";sleep 1;done
+}
+
 # Различные варианты 'ls' (предполагается, что установлена GNU-версия ls)
 #alias ee='nano '
+alias ls='ls -hF --color' # выделить различные типы файлов цветом
 alias nn='nano -u -c -i'
 alias ll='ls -la'
 alias la='ls -Al' # показать скрытые файлы
-alias ls='ls -GF' # выделить различные типы файлов цветом
-#alias ls='ls -hF --color' # выделить различные типы файлов цветом
 alias lx='ls -lXB' # сортировка по расширению
 alias lk='ls -lSr' # сортировка по размеру
 alias lc='ls -lcr' # сортировка по времени изменения
@@ -42,8 +66,8 @@ HISTFILESIZE=10000
 export PATH=$PATH:/usr/sbin
 
 shopt -s histappend
-PROMPT_COMMAND='history -a'
-export HISTCONTROL="ignoredups"
+export HISTCONTROL=ignoredups:erasedups
+
 shopt -s cmdhist
 
 # Мой PROMPT. Когда пользователем - зеленый, когда рутом - красным.
@@ -122,39 +146,47 @@ On_IWhite='\e[0;107m' # White
 
 
 set_prompt () {
-local last_command=$? # Must come first!
-PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@`hostname -I` \h: \w\a\]"
+  local last_command=$? # Must come first!
+  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@`hostname -I` \h: \w\a\]"
 
-local COLOR1="$BIGreen" # user name, prompt
-local COLOR2="$Green" # hostname
-local COLOR3="$IGreen" # command
-local COLOR4="$Cyan" # date time
-local COLOR5="$BRed" # error
-local checkmark='\342\234\223'
-local fancyX='\342\234\227'
+  local COLOR1="$BIGreen" # user name, prompt
+  local COLOR2="$Green" # hostname
+  local COLOR3="$IGreen" # command
+  local COLOR4="$Cyan" # date time
+  local COLOR5="$BRed" # error
+  local checkmark='\342\234\223'
+  local fancyX='\342\234\227'
 
-prompt_str=">"
-if [ `whoami` = "root" ]
-then
-COLOR1="$BIRed"
-prompt_str="#"
-fi
+  prompt_str=">"
+  if [ `whoami` = "root" ]
+    then
+    COLOR1="$BIRed"
+    prompt_str="#"
+  fi
 
-# если предыдущая команда вернула ошибку
-if [[ $last_command != 0 ]]; then
-PS1+="error:\[$COLOR5\]\[$last_command\] \n"
-fi
+  # если предыдущая команда вернула ошибку
+  if [[ $last_command != 0 ]]; then
+    PS1+="error:\[$COLOR5\]\[$last_command\] \n"
+  fi
 
-PS1+="\[$COLOR2\][\[$COLOR1\]\u\[$COLOR2\]@\H]\[$COLOR3\] \w\[$COLOR4\] \D{%F %T} \[$COLOR1\]\$prompt_str \[$Color_Off\]"
-
+  PS1+="\[$COLOR2\][\[$COLOR1\]\u\[$COLOR2\]@\H]\[$COLOR3\] \w\[$COLOR4\] \D{%F %T} \[$COLOR1\]\$prompt_str \[$Color_Off\]"
 }
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+#Ctrl+Left
 bind '"\eOC": forward-word'
+#Ctrl+Right
 bind '"\eOD": backward-word'
 
+#Ctrl+Backspace
+#bind '"\e[3;5~": kill-word'
+#bind '"\e[3;5~": kill-word'
+#bind '"\C-h": backward-kill-word'
+
+#bind '"\C-h":backward-kill-word'
+#bind '"\e\C-h":backward-kill-word'
 
 shopt -s autocd
 
@@ -166,17 +198,23 @@ complete -cf sudo
 
 PROMPT_COMMAND='set_prompt'
 
+# подкрашивать автодополняемые имена цветом как и ls
+set colored-stats On
+# игнорировать регистр при дополнении
+set completion-ignore-case On
+# общую часть дополнения при отображении схлопывает до "___"
+set completion-prefix-display-length 3
+# помечает дириктории-симлинки "@" — удобно при включеной colored-stats
+set mark-symlinked-directories On
+# начинает отображать возможные автодополнения по первому Tab'у
+set show-all-if-ambiguous On
+set show-all-if-unmodified On
+# отображать информацию о файлах в автодополнении
+set visible-stats On
 
 alias dclean='docker ps -aq | xargs --no-run-if-empty docker rm'
 alias dcleanvol="docker volume ls | awk '/^local/ { print \$2 }' | xargs --no-run-if-empty docker volume rm"
 alias ddangling='docker images --filter dangling=true -q | sort -u | xargs --no-run-if-empty docker rmi'
 
-if [ ! "$TMUX" ]; then
-# tmux attach || tmux new-session \; split-window -v \; split-window -h \; select-layout main-vertical;
-tmux attach || tmux new-session ;
-fi
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
-if [ `whoami` != "root" ]
-then
-[ -f /usr/bin/cmatrix ] && cmatrix -a -B
-fi
