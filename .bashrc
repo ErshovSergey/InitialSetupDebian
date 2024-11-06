@@ -36,6 +36,12 @@
 # alias cp='cp -i'
 # alias mv='mv -i'
 
+# Early exit if not running interactively to avoid side-effects!
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 Last_Command=$? # Must come first!
 
 #clock - A bash clock that can run in your terminal window.
